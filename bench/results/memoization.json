@@ -1,0 +1,370 @@
+{
+  "generatedAt": "2026-10-20T17:31:35.031Z",
+  "env": {
+    "ranAt": "2026-10-20T17:31:35.032Z",
+    "os": "Darwin 27.0.0 arm64",
+    "cpu": "Apple M1",
+    "cores": 8,
+    "memoryGiB": 8,
+    "node": "v24.21.0",
+    "git": "git version 2.54.0 (Apple Git-157)",
+    "gitLeakHunterCommit": "e4f3de8"
+  },
+  "runs": 5,
+  "shape": {
+    "paths": 300,
+    "filesPerCommit": 5,
+    "secretEvery": 10,
+    "seed": 2026
+  },
+  "profiles": [
+    {
+      "name": "high-reuse",
+      "poolSize": 150,
+      "description": "150 distinct file contents reused across 300 paths"
+    },
+    {
+      "name": "low-reuse",
+      "poolSize": 50000,
+      "description": "up to 50,000 distinct contents (almost every write is new)"
+    }
+  ],
+  "rows": [
+    {
+      "profile": "high-reuse",
+      "commits": 500,
+      "mode": "cache",
+      "runs": 5,
+      "medianMs": 65.5,
+      "minMs": 63,
+      "samplesMs": [
+        64.7,
+        65.5,
+        65.7,
+        65.8,
+        63
+      ],
+      "fileVersionsSeen": 2482,
+      "uniqueBlobsScanned": 150,
+      "cacheHits": 2332,
+      "bytesScanned": 76873,
+      "findings": 239,
+      "snapshotFileVersions": 131998
+    },
+    {
+      "profile": "high-reuse",
+      "commits": 500,
+      "mode": "no-cache",
+      "runs": 5,
+      "medianMs": 181.3,
+      "minMs": 177.5,
+      "samplesMs": [
+        181.3,
+        184.4,
+        189.3,
+        177.5,
+        178.9
+      ],
+      "fileVersionsSeen": 2482,
+      "uniqueBlobsScanned": 150,
+      "cacheHits": 0,
+      "bytesScanned": 1271866,
+      "findings": 239,
+      "snapshotFileVersions": 131998
+    },
+    {
+      "profile": "high-reuse",
+      "commits": 1000,
+      "mode": "cache",
+      "runs": 5,
+      "medianMs": 74.9,
+      "minMs": 73.9,
+      "samplesMs": [
+        74.9,
+        75.5,
+        77.3,
+        73.9,
+        74
+      ],
+      "fileVersionsSeen": 4964,
+      "uniqueBlobsScanned": 150,
+      "cacheHits": 4814,
+      "bytesScanned": 76873,
+      "findings": 485,
+      "snapshotFileVersions": 281998
+    },
+    {
+      "profile": "high-reuse",
+      "commits": 1000,
+      "mode": "no-cache",
+      "runs": 5,
+      "medianMs": 303.6,
+      "minMs": 301.1,
+      "samplesMs": [
+        317.3,
+        309,
+        303.6,
+        301.1,
+        303.5
+      ],
+      "fileVersionsSeen": 4964,
+      "uniqueBlobsScanned": 150,
+      "cacheHits": 0,
+      "bytesScanned": 2544741,
+      "findings": 485,
+      "snapshotFileVersions": 281998
+    },
+    {
+      "profile": "high-reuse",
+      "commits": 2000,
+      "mode": "cache",
+      "runs": 5,
+      "medianMs": 104.6,
+      "minMs": 101.6,
+      "samplesMs": [
+        103.6,
+        104.6,
+        101.6,
+        109.6,
+        108.7
+      ],
+      "fileVersionsSeen": 9939,
+      "uniqueBlobsScanned": 150,
+      "cacheHits": 9789,
+      "bytesScanned": 76873,
+      "findings": 894,
+      "snapshotFileVersions": 581998
+    },
+    {
+      "profile": "high-reuse",
+      "commits": 2000,
+      "mode": "no-cache",
+      "runs": 5,
+      "medianMs": 570.8,
+      "minMs": 567.1,
+      "samplesMs": [
+        570.8,
+        567.3,
+        567.1,
+        610.8,
+        573.1
+      ],
+      "fileVersionsSeen": 9939,
+      "uniqueBlobsScanned": 150,
+      "cacheHits": 0,
+      "bytesScanned": 5092564,
+      "findings": 894,
+      "snapshotFileVersions": 581998
+    },
+    {
+      "profile": "high-reuse",
+      "commits": 4000,
+      "mode": "cache",
+      "runs": 5,
+      "medianMs": 164,
+      "minMs": 162.1,
+      "samplesMs": [
+        164,
+        164.4,
+        170.7,
+        162.1,
+        163.6
+      ],
+      "fileVersionsSeen": 19865,
+      "uniqueBlobsScanned": 150,
+      "cacheHits": 19715,
+      "bytesScanned": 76873,
+      "findings": 1631,
+      "snapshotFileVersions": 1181998
+    },
+    {
+      "profile": "high-reuse",
+      "commits": 4000,
+      "mode": "no-cache",
+      "runs": 5,
+      "medianMs": 1084,
+      "minMs": 1078.2,
+      "samplesMs": [
+        1083.1,
+        1078.2,
+        1117.9,
+        1112.2,
+        1084
+      ],
+      "fileVersionsSeen": 19865,
+      "uniqueBlobsScanned": 150,
+      "cacheHits": 0,
+      "bytesScanned": 10180935,
+      "findings": 1631,
+      "snapshotFileVersions": 1181998
+    },
+    {
+      "profile": "low-reuse",
+      "commits": 500,
+      "mode": "cache",
+      "runs": 5,
+      "medianMs": 229.4,
+      "minMs": 226.7,
+      "samplesMs": [
+        230.8,
+        229.4,
+        229,
+        229.9,
+        226.7
+      ],
+      "fileVersionsSeen": 2500,
+      "uniqueBlobsScanned": 2451,
+      "cacheHits": 49,
+      "bytesScanned": 1274794,
+      "findings": 248,
+      "snapshotFileVersions": 131954
+    },
+    {
+      "profile": "low-reuse",
+      "commits": 500,
+      "mode": "no-cache",
+      "runs": 5,
+      "medianMs": 230,
+      "minMs": 227.6,
+      "samplesMs": [
+        257.7,
+        230,
+        229.1,
+        236.2,
+        227.6
+      ],
+      "fileVersionsSeen": 2500,
+      "uniqueBlobsScanned": 2451,
+      "cacheHits": 0,
+      "bytesScanned": 1300413,
+      "findings": 248,
+      "snapshotFileVersions": 131954
+    },
+    {
+      "profile": "low-reuse",
+      "commits": 1000,
+      "mode": "cache",
+      "runs": 5,
+      "medianMs": 403.7,
+      "minMs": 397.6,
+      "samplesMs": [
+        402.6,
+        397.6,
+        405.5,
+        404,
+        403.7
+      ],
+      "fileVersionsSeen": 5000,
+      "uniqueBlobsScanned": 4772,
+      "cacheHits": 228,
+      "bytesScanned": 2482229,
+      "findings": 501,
+      "snapshotFileVersions": 281954
+    },
+    {
+      "profile": "low-reuse",
+      "commits": 1000,
+      "mode": "no-cache",
+      "runs": 5,
+      "medianMs": 419.1,
+      "minMs": 414.4,
+      "samplesMs": [
+        414.4,
+        419.1,
+        418.3,
+        456.5,
+        437.3
+      ],
+      "fileVersionsSeen": 5000,
+      "uniqueBlobsScanned": 4772,
+      "cacheHits": 0,
+      "bytesScanned": 2601276,
+      "findings": 501,
+      "snapshotFileVersions": 281954
+    },
+    {
+      "profile": "low-reuse",
+      "commits": 2000,
+      "mode": "cache",
+      "runs": 5,
+      "medianMs": 672.6,
+      "minMs": 665.6,
+      "samplesMs": [
+        676.3,
+        672.6,
+        682,
+        667.3,
+        665.6
+      ],
+      "fileVersionsSeen": 10000,
+      "uniqueBlobsScanned": 9079,
+      "cacheHits": 921,
+      "bytesScanned": 4722985,
+      "findings": 1000,
+      "snapshotFileVersions": 581954
+    },
+    {
+      "profile": "low-reuse",
+      "commits": 2000,
+      "mode": "no-cache",
+      "runs": 5,
+      "medianMs": 717.4,
+      "minMs": 712.2,
+      "samplesMs": [
+        717.5,
+        712.2,
+        717.4,
+        716.4,
+        756.9
+      ],
+      "fileVersionsSeen": 10000,
+      "uniqueBlobsScanned": 9079,
+      "cacheHits": 0,
+      "bytesScanned": 5202111,
+      "findings": 1000,
+      "snapshotFileVersions": 581954
+    },
+    {
+      "profile": "low-reuse",
+      "commits": 4000,
+      "mode": "cache",
+      "runs": 5,
+      "medianMs": 1131.3,
+      "minMs": 1126.4,
+      "samplesMs": [
+        1131.3,
+        1132.5,
+        1126.4,
+        1133,
+        1129.2
+      ],
+      "fileVersionsSeen": 20000,
+      "uniqueBlobsScanned": 16538,
+      "cacheHits": 3462,
+      "bytesScanned": 8604575,
+      "findings": 2026,
+      "snapshotFileVersions": 1181954
+    },
+    {
+      "profile": "low-reuse",
+      "commits": 4000,
+      "mode": "no-cache",
+      "runs": 5,
+      "medianMs": 1314.8,
+      "minMs": 1303.3,
+      "samplesMs": [
+        1314.8,
+        1349.5,
+        1313.6,
+        1303.3,
+        1365.5
+      ],
+      "fileVersionsSeen": 20000,
+      "uniqueBlobsScanned": 16538,
+      "cacheHits": 0,
+      "bytesScanned": 10406250,
+      "findings": 2026,
+      "snapshotFileVersions": 1181954
+    }
+  ]
+}

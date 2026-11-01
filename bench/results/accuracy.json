@@ -1,0 +1,624 @@
+{
+  "generatedAt": "2026-10-21T05:07:45.191Z",
+  "env": {
+    "ranAt": "2026-10-21T05:07:45.202Z",
+    "os": "Darwin 27.0.0 arm64",
+    "cpu": "Apple M1",
+    "cores": 8,
+    "memoryGiB": 8,
+    "node": "v24.21.0",
+    "git": "git version 2.54.0 (Apple Git-157)",
+    "gitLeakHunterCommit": "70f78a1"
+  },
+  "seed": 1337,
+  "matching": "A tool finding is a true positive when its (repo, file path, line) equals a planted secret in ground-truth.json; several reports of the same planted secret count once. Each distinct unmatched (repo, path, line) is one false positive. Planted secrets never matched are false negatives.",
+  "tools": [
+    {
+      "tool": "git-leak-hunter",
+      "version": "0.1.0 (commit 70f78a1)",
+      "command": "node --import tsx src/cli.ts scan <repo> --format json --out <out> --quiet",
+      "status": "ran",
+      "totals": {
+        "planted": 32,
+        "tp": 32,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1,
+        "recall": 1,
+        "rawFindings": 32
+      },
+      "repos": [
+        {
+          "repo": "history-only",
+          "planted": 3,
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "fnIds": [],
+          "matched": {
+            "aws-key-id": [
+              "aws-access-key-id"
+            ],
+            "aws-secret": [
+              "aws-secret-access-key"
+            ],
+            "github-token": [
+              "github-token"
+            ]
+          },
+          "fpLocations": [],
+          "rawFindings": 3,
+          "durationMs": 464
+        },
+        {
+          "repo": "head-secrets",
+          "planted": 7,
+          "tp": 7,
+          "fp": 0,
+          "fn": 0,
+          "fnIds": [],
+          "matched": {
+            "stripe-live": [
+              "stripe-live-key"
+            ],
+            "stripe-test": [
+              "stripe-test-key"
+            ],
+            "slack-webhook": [
+              "slack-webhook"
+            ],
+            "slack-bot": [
+              "slack-token"
+            ],
+            "deploy-key": [
+              "private-key"
+            ],
+            "generic-app": [
+              "generic-secret"
+            ],
+            "generic-docs": [
+              "generic-secret"
+            ]
+          },
+          "fpLocations": [],
+          "rawFindings": 7,
+          "durationMs": 461
+        },
+        {
+          "repo": "blob-reuse",
+          "planted": 4,
+          "tp": 4,
+          "fp": 0,
+          "fn": 0,
+          "fnIds": [],
+          "matched": {
+            "token-a": [
+              "github-token"
+            ],
+            "token-b": [
+              "github-token"
+            ],
+            "token-c": [
+              "github-token"
+            ],
+            "token-d": [
+              "github-token"
+            ]
+          },
+          "fpLocations": [],
+          "rawFindings": 4,
+          "durationMs": 504
+        },
+        {
+          "repo": "merge-conflict",
+          "planted": 2,
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "fnIds": [],
+          "matched": {
+            "resolution-token": [
+              "github-token"
+            ],
+            "evil-merge-slack": [
+              "slack-token"
+            ]
+          },
+          "fpLocations": [],
+          "rawFindings": 2,
+          "durationMs": 680
+        },
+        {
+          "repo": "ci-configs",
+          "planted": 12,
+          "tp": 12,
+          "fp": 0,
+          "fn": 0,
+          "fnIds": [],
+          "matched": {
+            "gha-workflow-env": [
+              "github-actions-literal"
+            ],
+            "gha-job-env": [
+              "github-actions-literal"
+            ],
+            "gha-with-input": [
+              "github-actions-literal"
+            ],
+            "gitlab-global": [
+              "gitlab-ci-literal"
+            ],
+            "gitlab-job": [
+              "gitlab-ci-literal"
+            ],
+            "docker-arg": [
+              "dockerfile-literal"
+            ],
+            "docker-env-continuation": [
+              "dockerfile-literal"
+            ],
+            "docker-env-space": [
+              "dockerfile-literal"
+            ],
+            "dotenv": [
+              "dotenv-secret"
+            ],
+            "id-rsa": [
+              "private-key"
+            ],
+            "npmrc": [
+              "npmrc-auth-token"
+            ],
+            "credentials-json": [
+              "credentials-json-secret"
+            ]
+          },
+          "fpLocations": [],
+          "rawFindings": 12,
+          "durationMs": 411
+        },
+        {
+          "repo": "false-positives",
+          "planted": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "fnIds": [],
+          "matched": {},
+          "fpLocations": [],
+          "rawFindings": 0,
+          "durationMs": 343
+        },
+        {
+          "repo": "hostile",
+          "planted": 4,
+          "tp": 4,
+          "fp": 0,
+          "fn": 0,
+          "fnIds": [],
+          "matched": {
+            "xss-filename": [
+              "github-token"
+            ],
+            "dash-filename": [
+              "stripe-live-key"
+            ],
+            "unicode-filename": [
+              "slack-token"
+            ],
+            "newline-filename": [
+              "github-token"
+            ]
+          },
+          "fpLocations": [],
+          "rawFindings": 4,
+          "durationMs": 413
+        },
+        {
+          "repo": "clean",
+          "planted": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "fnIds": [],
+          "matched": {},
+          "fpLocations": [],
+          "rawFindings": 0,
+          "durationMs": 418
+        }
+      ]
+    },
+    {
+      "tool": "gitleaks",
+      "version": "8.30.1",
+      "command": "gitleaks git <repo> --report-format json --report-path <out>/gitleaks.json --redact --no-banner --exit-code 0 --log-level error",
+      "install": "brew install gitleaks  (or see https://github.com/gitleaks/gitleaks#installing)",
+      "status": "ran",
+      "totals": {
+        "planted": 32,
+        "tp": 28,
+        "fp": 0,
+        "fn": 4,
+        "precision": 1,
+        "recall": 0.875,
+        "rawFindings": 29
+      },
+      "repos": [
+        {
+          "repo": "history-only",
+          "planted": 3,
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "fnIds": [],
+          "matched": {
+            "aws-key-id": [
+              "aws-access-token"
+            ],
+            "aws-secret": [
+              "generic-api-key"
+            ],
+            "github-token": [
+              "github-pat"
+            ]
+          },
+          "fpLocations": [],
+          "rawFindings": 3,
+          "durationMs": 195
+        },
+        {
+          "repo": "head-secrets",
+          "planted": 7,
+          "tp": 7,
+          "fp": 0,
+          "fn": 0,
+          "fnIds": [],
+          "matched": {
+            "stripe-live": [
+              "stripe-access-token"
+            ],
+            "stripe-test": [
+              "stripe-access-token"
+            ],
+            "slack-webhook": [
+              "slack-webhook-url"
+            ],
+            "slack-bot": [
+              "slack-bot-token"
+            ],
+            "deploy-key": [
+              "private-key"
+            ],
+            "generic-app": [
+              "generic-api-key"
+            ],
+            "generic-docs": [
+              "generic-api-key"
+            ]
+          },
+          "fpLocations": [],
+          "rawFindings": 7,
+          "durationMs": 195
+        },
+        {
+          "repo": "blob-reuse",
+          "planted": 4,
+          "tp": 4,
+          "fp": 0,
+          "fn": 0,
+          "fnIds": [],
+          "matched": {
+            "token-a": [
+              "github-pat"
+            ],
+            "token-b": [
+              "github-pat"
+            ],
+            "token-c": [
+              "github-pat"
+            ],
+            "token-d": [
+              "github-pat"
+            ]
+          },
+          "fpLocations": [],
+          "rawFindings": 5,
+          "durationMs": 183
+        },
+        {
+          "repo": "merge-conflict",
+          "planted": 2,
+          "tp": 0,
+          "fp": 0,
+          "fn": 2,
+          "fnIds": [
+            "resolution-token (github-token)",
+            "evil-merge-slack (slack-token)"
+          ],
+          "matched": {},
+          "fpLocations": [],
+          "rawFindings": 0,
+          "durationMs": 150
+        },
+        {
+          "repo": "ci-configs",
+          "planted": 12,
+          "tp": 10,
+          "fp": 0,
+          "fn": 2,
+          "fnIds": [
+            "docker-arg (dockerfile-literal)",
+            "docker-env-space (dockerfile-literal)"
+          ],
+          "matched": {
+            "gha-workflow-env": [
+              "generic-api-key"
+            ],
+            "gha-job-env": [
+              "generic-api-key"
+            ],
+            "gha-with-input": [
+              "generic-api-key"
+            ],
+            "gitlab-global": [
+              "generic-api-key"
+            ],
+            "gitlab-job": [
+              "generic-api-key"
+            ],
+            "docker-env-continuation": [
+              "generic-api-key"
+            ],
+            "dotenv": [
+              "generic-api-key"
+            ],
+            "id-rsa": [
+              "private-key"
+            ],
+            "npmrc": [
+              "npm-access-token"
+            ],
+            "credentials-json": [
+              "generic-api-key"
+            ]
+          },
+          "fpLocations": [],
+          "rawFindings": 10,
+          "durationMs": 145
+        },
+        {
+          "repo": "false-positives",
+          "planted": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "fnIds": [],
+          "matched": {},
+          "fpLocations": [],
+          "rawFindings": 0,
+          "durationMs": 152
+        },
+        {
+          "repo": "hostile",
+          "planted": 4,
+          "tp": 4,
+          "fp": 0,
+          "fn": 0,
+          "fnIds": [],
+          "matched": {
+            "xss-filename": [
+              "github-pat"
+            ],
+            "dash-filename": [
+              "stripe-access-token"
+            ],
+            "unicode-filename": [
+              "slack-bot-token"
+            ],
+            "newline-filename": [
+              "github-pat"
+            ]
+          },
+          "fpLocations": [],
+          "rawFindings": 4,
+          "durationMs": 1944
+        },
+        {
+          "repo": "clean",
+          "planted": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "fnIds": [],
+          "matched": {},
+          "fpLocations": [],
+          "rawFindings": 0,
+          "durationMs": 102
+        }
+      ]
+    },
+    {
+      "tool": "trufflehog",
+      "version": "trufflehog 3.99.3",
+      "command": "trufflehog git file://<repo> --json --no-verification --no-update",
+      "install": "brew install trufflehog  (or see https://github.com/trufflesecurity/trufflehog#floppy_disk-installation)",
+      "status": "ran",
+      "totals": {
+        "planted": 32,
+        "tp": 14,
+        "fp": 0,
+        "fn": 18,
+        "precision": 1,
+        "recall": 0.4375,
+        "rawFindings": 15
+      },
+      "repos": [
+        {
+          "repo": "history-only",
+          "planted": 3,
+          "tp": 2,
+          "fp": 0,
+          "fn": 1,
+          "fnIds": [
+            "aws-secret (aws-secret-access-key)"
+          ],
+          "matched": {
+            "aws-key-id": [
+              "AWS"
+            ],
+            "github-token": [
+              "Github"
+            ]
+          },
+          "fpLocations": [],
+          "rawFindings": 2,
+          "durationMs": 1577
+        },
+        {
+          "repo": "head-secrets",
+          "planted": 7,
+          "tp": 3,
+          "fp": 0,
+          "fn": 4,
+          "fnIds": [
+            "stripe-test (stripe-test-key)",
+            "deploy-key (private-key)",
+            "generic-app (generic-high-entropy)",
+            "generic-docs (generic-high-entropy)"
+          ],
+          "matched": {
+            "stripe-live": [
+              "Stripe"
+            ],
+            "slack-webhook": [
+              "SlackWebhook"
+            ],
+            "slack-bot": [
+              "Slack"
+            ]
+          },
+          "fpLocations": [],
+          "rawFindings": 3,
+          "durationMs": 1516
+        },
+        {
+          "repo": "blob-reuse",
+          "planted": 4,
+          "tp": 4,
+          "fp": 0,
+          "fn": 0,
+          "fnIds": [],
+          "matched": {
+            "token-a": [
+              "Github"
+            ],
+            "token-b": [
+              "Github"
+            ],
+            "token-c": [
+              "Github"
+            ],
+            "token-d": [
+              "Github"
+            ]
+          },
+          "fpLocations": [],
+          "rawFindings": 5,
+          "durationMs": 1673
+        },
+        {
+          "repo": "merge-conflict",
+          "planted": 2,
+          "tp": 0,
+          "fp": 0,
+          "fn": 2,
+          "fnIds": [
+            "resolution-token (github-token)",
+            "evil-merge-slack (slack-token)"
+          ],
+          "matched": {},
+          "fpLocations": [],
+          "rawFindings": 0,
+          "durationMs": 2077
+        },
+        {
+          "repo": "ci-configs",
+          "planted": 12,
+          "tp": 1,
+          "fp": 0,
+          "fn": 11,
+          "fnIds": [
+            "gha-workflow-env (ci-literal)",
+            "gha-job-env (ci-literal)",
+            "gha-with-input (ci-literal)",
+            "gitlab-global (ci-literal)",
+            "gitlab-job (ci-literal)",
+            "docker-arg (dockerfile-literal)",
+            "docker-env-continuation (dockerfile-literal)",
+            "docker-env-space (dockerfile-literal)",
+            "dotenv (credential-file)",
+            "id-rsa (private-key)",
+            "credentials-json (credential-file)"
+          ],
+          "matched": {
+            "npmrc": [
+              "NpmToken"
+            ]
+          },
+          "fpLocations": [],
+          "rawFindings": 1,
+          "durationMs": 1602
+        },
+        {
+          "repo": "false-positives",
+          "planted": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "fnIds": [],
+          "matched": {},
+          "fpLocations": [],
+          "rawFindings": 0,
+          "durationMs": 1619
+        },
+        {
+          "repo": "hostile",
+          "planted": 4,
+          "tp": 4,
+          "fp": 0,
+          "fn": 0,
+          "fnIds": [],
+          "matched": {
+            "xss-filename": [
+              "Github"
+            ],
+            "dash-filename": [
+              "Stripe"
+            ],
+            "unicode-filename": [
+              "Slack"
+            ],
+            "newline-filename": [
+              "Github"
+            ]
+          },
+          "fpLocations": [],
+          "rawFindings": 4,
+          "durationMs": 1746
+        },
+        {
+          "repo": "clean",
+          "planted": 0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "fnIds": [],
+          "matched": {},
+          "fpLocations": [],
+          "rawFindings": 0,
+          "durationMs": 1608
+        }
+      ]
+    }
+  ]
+}
